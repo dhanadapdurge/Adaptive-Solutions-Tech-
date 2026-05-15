@@ -1,0 +1,130 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  body {
+    background: #CBD8E6; /* Base atmospheric soft-light */
+    color: #0F172A; /* Deep Navy text for high contrast */
+    overflow-x: hidden;
+    font-family: var(--font-outfit), sans-serif;
+    font-size: 16px;
+    letter-spacing: -0.02em;
+    position: relative;
+  }
+
+  /* Grain overlay */
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+    opacity: 0.03;
+    pointer-events: none;
+    z-index: 9999;
+  }
+
+  /* Cinematic Background Overlay - HUD Depth */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: -100;
+    background: 
+      radial-gradient(circle at 50% 50%, rgba(15, 23, 42, 0.4) 0%, transparent 100%);
+    pointer-events: none;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-outfit), sans-serif;
+    letter-spacing: -0.05em;
+  }
+
+  .font-poppins {
+    font-family: var(--font-poppins), sans-serif;
+  }
+
+  ::selection {
+    background: #00f2ff;
+    color: #ffffff;
+  }
+}
+
+@layer components {
+  /* Glassmorphism utility - Light Mode */
+  .glass {
+    background: rgba(220, 230, 242, 0.4); /* Muted slate-blue glass */
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    box-shadow: 
+      0 10px 25px -5px rgba(0, 0, 0, 0.05),
+      0 8px 10px -6px rgba(0, 0, 0, 0.05);
+  }
+
+  /* Glassmorphism for Light Theme */
+  .glass-premium {
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(24px);
+    border: 1px solid rgba(15, 23, 42, 0.1);
+    box-shadow: 
+      0 20px 40px -10px rgba(0, 0, 0, 0.05),
+      inset 0 1px 1px rgba(255, 255, 255, 0.2);
+  }
+
+  .glass-dark {
+    background: rgba(15, 23, 42, 0.08);
+    backdrop-filter: blur(30px);
+    border: 1px solid rgba(15, 23, 42, 0.1);
+    box-shadow: 0 10px 40px -5px rgba(0, 0, 0, 0.1);
+  }
+
+  .text-glow {
+    text-shadow: 0 0 15px rgba(0, 242, 255, 0.4);
+  }
+
+  .border-glow {
+    box-shadow: 0 0 15px rgba(0, 242, 255, 0.1);
+  }
+}
+
+@layer utilities {
+  /* Hide scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #050816;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #0B1F3A;
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #00f2ff;
+  }
+
+  /* 3D utilities */
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+  @keyframes shimmer {
+  0% { opacity: 0.2; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.1); }
+  100% { opacity: 0.2; transform: scale(1); }
+}
+
+.animate-shimmer {
+  animation: shimmer 8s infinite ease-in-out;
+}
+  .backface-hidden {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+}
