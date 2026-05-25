@@ -29,12 +29,12 @@ export function CourseMedia() {
     <section className="py-24 px-6 bg-transparent">
       <div className="max-w-7xl mx-auto">
         <div className="mb-16">
-          <div className="flex items-center gap-2 text-cyan-600 font-bold tracking-widest uppercase text-xs mb-4">
+          <div className="flex items-center gap-2 text-[#F97316] font-sans font-bold tracking-widest uppercase text-xs mb-4">
             <Camera className="w-4 h-4" />
             Learning in Action
           </div>
-          <h2 className="text-4xl md:text-5xl font-black tracking-tighter uppercase text-slate-900">
-            Student <span className="text-cyan-600">Experience</span>
+          <h2 className="text-4xl md:text-5xl font-heading font-extrabold tracking-tight uppercase text-slate-900">
+            Student <span className="text-[#F97316] italic font-heading font-extrabold">Experience</span>
           </h2>
         </div>
 
@@ -45,8 +45,12 @@ export function CourseMedia() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: idx * 0.1 }}
-              className="group relative rounded-[2.5rem] overflow-hidden border border-black/5 glass bg-white shadow-sm"
+              className="group relative"
             >
+              <div className="h-full rounded-[2.5rem] overflow-hidden border border-[#E2E8F0] bg-[#FFFFFF] shadow-sm hover:shadow-md font-sans relative transition-[all] duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] hover:-translate-y-[6px] hover:shadow-[0_20px_25px_-5px_rgba(249,115,22,0.08)] flex flex-col justify-between">
+                {/* Thin Stylish Gradient Border Stroke */}
+                <div className="absolute inset-0 rounded-[2.5rem] border border-transparent bg-gradient-to-br from-[#F97316]/20 to-transparent opacity-60 pointer-events-none" style={{ padding: '1px', WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)', WebkitMaskComposite: 'xor', maskComposite: 'exclude' }}></div>
+                
               <div className="aspect-[4/3] relative overflow-hidden">
                 <img
                   src={item.url}
@@ -58,7 +62,7 @@ export function CourseMedia() {
                 
                 {item.type === "video" && (
                    <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-16 h-16 rounded-full bg-cyan-600 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                    <div className="w-16 h-16 rounded-full bg-[#F97316] flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
                       <Play className="w-6 h-6 fill-white text-white ml-1" />
                     </div>
                   </div>
@@ -66,12 +70,13 @@ export function CourseMedia() {
               </div>
               
               <div className="p-8">
-                <h4 className="text-xl font-bold text-slate-900 mb-2 uppercase tracking-tight">{item.title}</h4>
-                <p className="text-slate-600 text-sm">{item.desc}</p>
+                <h4 className="text-xl font-heading font-bold text-slate-900 mb-2 uppercase tracking-tight">{item.title}</h4>
+                <p className="text-slate-650 text-sm font-sans font-normal leading-relaxed">{item.desc}</p>
               </div>
 
               {/* Hover Glow */}
-              <div className="absolute inset-0 border-2 border-transparent group-hover:border-cyan-500/20 rounded-[2.5rem] transition-colors pointer-events-none"></div>
+              <div className="absolute inset-0 border-2 border-transparent group-hover:border-[#F97316]/20 rounded-[2.5rem] transition-colors pointer-events-none font-sans"></div>
+              </div>
             </motion.div>
           ))}
         </div>

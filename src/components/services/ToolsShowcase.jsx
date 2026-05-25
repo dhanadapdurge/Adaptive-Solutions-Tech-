@@ -12,12 +12,12 @@ import {
 } from "lucide-react";
 
 const tools = [
-  { name: "Interactive Slides", icon: ZapIcon, color: "text-orange-400" },
-  { name: "3D Learning", icon: CpuIcon, color: "text-blue-400" },
-  { name: "Web Apps", icon: CodeIcon, color: "text-cyan-400" },
-  { name: "Design Tools", icon: PaletteIcon, color: "text-pink-400" },
-  { name: "Learning Standards", icon: GlobeIcon, color: "text-emerald-400" },
-  { name: "Learning Systems", icon: LayersIcon, color: "text-purple-400" },
+  { name: "Interactive Slides", icon: ZapIcon, color: "text-orange-600" },
+  { name: "3D Learning", icon: CpuIcon, color: "text-blue-600" },
+  { name: "Web Apps", icon: CodeIcon, color: "text-indigo-600" },
+  { name: "Design Tools", icon: PaletteIcon, color: "text-pink-600" },
+  { name: "Learning Standards", icon: GlobeIcon, color: "text-emerald-600" },
+  { name: "Learning Systems", icon: LayersIcon, color: "text-purple-600" },
 ];
 
 export function ToolsShowcase() {
@@ -26,10 +26,10 @@ export function ToolsShowcase() {
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col lg:flex-row items-center gap-20">
           <div className="flex-1">
-            <h2 className="text-4xl md:text-7xl font-black mb-8 tracking-tighter font-poppins text-[#0F172A] uppercase leading-[0.85]">
-              The <span className="text-cyan-600">Tools We Use</span>
+            <h2 className="text-[1.75rem] md:text-[2.5rem] font-heading font-extrabold mb-8 tracking-tight text-[#0F172A] uppercase leading-tight">
+              The Tools We <span className="text-[#F97316] italic font-heading font-extrabold">Use</span>
             </h2>
-            <p className="text-slate-700 text-[11px] font-black uppercase tracking-[0.4em] mb-12 max-w-xl opacity-80 font-poppins">
+            <p className="text-slate-650 text-sm font-sans font-normal mb-12 max-w-xl opacity-80 leading-relaxed">
               We use the best technology to create learning that is easy, fun, and works for you.
             </p>
             
@@ -40,15 +40,17 @@ export function ToolsShowcase() {
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ delay: i * 0.1 }}
-                  className="p-8 rounded-[2.5rem] border border-black/5 transition-all shadow-xl flex items-center gap-6 group bg-[#0F172A] hover:border-cyan-400/50"
+                  className="p-8 rounded-[2.5rem] border border-[#E2E8F0] transition-[all] duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] hover:-translate-y-[6px] hover:shadow-[0_20px_25px_-5px_rgba(249,115,22,0.08)] flex items-center gap-6 group bg-[#FFFFFF] relative overflow-hidden"
                 >
-                  <div className={cn(
-                    "w-14 h-14 rounded-2xl flex items-center justify-center transition-transform group-hover:scale-110 shadow-lg bg-white/5 border border-white/10",
-                    tool.color
-                  )}>
-                    <tool.icon className="w-7 h-7" />
+                  {/* Thin Stylish Gradient Border Stroke */}
+                  <div className="absolute inset-0 rounded-[2.5rem] border border-transparent bg-gradient-to-br from-[#F97316]/20 to-transparent opacity-60 pointer-events-none" style={{ padding: '1px', WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)', WebkitMaskComposite: 'xor', maskComposite: 'exclude' }}></div>
+
+                  {/* Icon Badge: semi-transparent circular pill container with shifting vibrancy */}
+                  <div className="w-14 h-14 rounded-full flex items-center justify-center bg-[#F97316]/10 border border-[#F97316]/20 transition-all duration-300 group-hover:bg-[#F97316]/20 group-hover:scale-110 shadow-sm relative z-10">
+                    <tool.icon className="w-6 h-6 text-[#F97316] transition-transform duration-300 group-hover:rotate-12" />
                   </div>
-                  <span className="text-[12px] font-black text-white group-hover:text-cyan-400 transition-colors uppercase tracking-[0.2em] font-poppins">
+                  
+                  <span className="text-[12px] font-sans font-semibold text-slate-800 group-hover:text-[#F97316] transition-colors uppercase tracking-[0.2em] relative z-10">
                     {tool.name}
                   </span>
                 </motion.div>
@@ -63,18 +65,18 @@ export function ToolsShowcase() {
               {[1.2, 1.0, 0.8, 0.6, 0.4].map((scale, i) => (
                 <div 
                   key={i}
-                  className="absolute inset-0 rounded-full border border-slate-900/20 shadow-[inset_0_0_20px_rgba(15,23,42,0.05)]"
+                  className="absolute inset-0 rounded-full border border-slate-900/10 shadow-[inset_0_0_20px_rgba(15,23,42,0.02)]"
                   style={{ transform: `scale(${scale})` }}
                 ></div>
               ))}
               
               {/* SHINY ORBITING NODES - One per orbit */}
               {[
-                { color: "bg-cyan-500", size: "w-8 h-8", duration: 18, delay: 0, scale: 1.2, glow: "rgba(6,182,212,0.6)" },
-                { color: "bg-blue-600", size: "w-7 h-7", duration: 22, delay: -5, scale: 1.0, glow: "rgba(37,99,235,0.5)" },
-                { color: "bg-pink-500", size: "w-6 h-6", duration: 26, delay: -10, scale: 0.8, glow: "rgba(236,72,153,0.5)" },
-                { color: "bg-emerald-500", size: "w-5 h-5", duration: 20, delay: -15, scale: 0.6, glow: "rgba(16,185,129,0.5)" },
-                { color: "bg-amber-500", size: "w-7 h-7", duration: 30, delay: -20, scale: 0.4, glow: "rgba(245,158,11,0.5)" },
+                { color: "bg-blue-500", size: "w-8 h-8", duration: 18, delay: 0, scale: 1.2, glow: "rgba(59,130,246,0.5)" },
+                { color: "bg-indigo-650", size: "w-7 h-7", duration: 22, delay: -5, scale: 1.0, glow: "rgba(79,70,229,0.4)" },
+                { color: "bg-pink-500", size: "w-6 h-6", duration: 26, delay: -10, scale: 0.8, glow: "rgba(236,72,153,0.4)" },
+                { color: "bg-emerald-500", size: "w-5 h-5", duration: 20, delay: -15, scale: 0.6, glow: "rgba(16,185,129,0.4)" },
+                { color: "bg-amber-500", size: "w-7 h-7", duration: 30, delay: -20, scale: 0.4, glow: "rgba(245,158,11,0.4)" },
               ].map((node, i) => (
                 <div 
                   key={i} 
@@ -92,7 +94,7 @@ export function ToolsShowcase() {
                       node.color
                     )}
                     style={{ 
-                      boxShadow: `0 0 25px ${node.glow}, inset -2px -2px 10px rgba(0,0,0,0.2)`
+                      boxShadow: `0 0 25px ${node.glow}, inset -2px -2px 10px rgba(0,0,0,0.15)`
                     }}>
                       {/* SHINY REFLECTION EFFECT */}
                       <div className="absolute top-1 left-1 w-[40%] h-[40%] bg-white/60 rounded-full blur-[1px]"></div>
@@ -113,12 +115,12 @@ export function ToolsShowcase() {
                      rotate: { duration: 25, repeat: Infinity, ease: "linear" },
                      scale: { duration: 4, repeat: Infinity, ease: "easeInOut" }
                    }}
-                   className="w-24 h-24 rounded-[2.5rem] bg-[#0F172A] border border-white/10 flex items-center justify-center shadow-2xl z-10 overflow-hidden"
+                   className="w-24 h-24 rounded-[2.5rem] bg-white border border-slate-200 flex items-center justify-center shadow-2xl z-10 overflow-hidden"
                 >
-                   <div className="absolute inset-0 bg-gradient-to-tr from-cyan-500/10 to-transparent"></div>
-                   <CpuIcon className="w-10 h-10 text-cyan-400 relative z-10" />
+                   <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/10 to-transparent"></div>
+                   <CpuIcon className="w-10 h-10 text-blue-600 relative z-10" />
                 </motion.div>
-                <div className="absolute w-48 h-48 bg-cyan-600/10 blur-[100px] rounded-full animate-pulse"></div>
+                <div className="absolute w-48 h-48 bg-blue-600/5 blur-[100px] rounded-full animate-pulse"></div>
               </div>
             </div>
           </div>

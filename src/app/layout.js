@@ -1,35 +1,35 @@
-import { Outfit, Inter, Poppins } from "next/font/google";
+import { Plus_Jakarta_Sans, Inter } from "next/font/google";
 import "./globals.css";
 
-const outfit = Outfit({ 
+const plusJakartaSans = Plus_Jakarta_Sans({ 
   subsets: ["latin"], 
-  variable: "--font-outfit" 
+  variable: "--font-plus-jakarta-sans",
+  weight: ["400", "500", "600", "700", "800"]
 });
 
 const inter = Inter({ 
   subsets: ["latin"], 
-  variable: "--font-inter" 
+  variable: "--font-inter",
+  weight: ["400", "500", "600", "700"]
 });
 
-const poppins = Poppins({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800", "900"],
-  variable: "--font-poppins"
-});
+// Map legacy fonts for safe fallback propagation
+const outfit = inter;
+const poppins = inter;
+
+import { Chatbot } from "@/components/layout/Chatbot";
 
 export const metadata = {
   title: "EduTech | Modern Learning Experience",
   description: "Transform learning into a cinematic futuristic experience with AI-powered EdTech solutions.",
 };
 
-import { SpaceBackground } from "@/components/visuals/SpaceBackground";
-
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${outfit.variable} ${inter.variable} ${poppins.variable}`}>
-      <body className="bg-transparent text-slate-900 antialiased selection:bg-cyan-500 selection:text-white font-sans">
-        <SpaceBackground />
+    <html lang="en" className={`${plusJakartaSans.variable} ${inter.variable}`}>
+      <body className="bg-[#F4F7FC] text-slate-900 antialiased font-sans">
         {children}
+        <Chatbot />
       </body>
     </html>
   );

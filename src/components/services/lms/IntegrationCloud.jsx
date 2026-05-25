@@ -14,18 +14,9 @@ const integrations = [
 
 export function IntegrationCloud() {
   const [mounted, setMounted] = React.useState(false);
-  const [particles, setParticles] = React.useState([]);
 
   React.useEffect(() => {
     setMounted(true);
-    // Generate particles on the client only
-    const newParticles = [...Array(10)].map((_, i) => ({
-      id: i,
-      top: `${Math.random() * 100}%`,
-      left: `${Math.random() * 100}%`,
-      duration: 10 + i
-    }));
-    setParticles(newParticles);
   }, []);
 
   if (!mounted) return (
@@ -47,7 +38,7 @@ export function IntegrationCloud() {
         </p>
 
         {/* Animated Integration Cloud */}
-        <div className="relative h-[500px] flex items-center justify-center">
+        <div className="relative h-[550px] flex items-center justify-center">
            {/* Central Core Icon - Professional Replacement */}
            <div className="w-16 h-16 rounded-3xl bg-white border border-black/10 flex items-center justify-center shadow-2xl z-20 group hover:border-cyan-600 transition-all">
               <Cloud className="w-8 h-8 text-cyan-600" />
@@ -106,25 +97,7 @@ export function IntegrationCloud() {
               })}
            </svg>
 
-           {/* Floating background particles */}
-           <div className="absolute inset-0 pointer-events-none">
-              {particles.map((p) => (
-                 <motion.div
-                   key={p.id}
-                   animate={{
-                     y: [0, -100, 0],
-                     x: [0, p.id % 2 === 0 ? 50 : -50, 0],
-                     opacity: [0, 0.3, 0]
-                   }}
-                   transition={{ duration: p.duration, repeat: Infinity }}
-                   className="absolute w-1 h-1 bg-electric-cyan rounded-full"
-                   style={{
-                     top: p.top,
-                     left: p.left
-                   }}
-                 ></motion.div>
-              ))}
-           </div>
+
         </div>
       </div>
     </section>

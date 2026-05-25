@@ -4,16 +4,17 @@ import Link from "next/link";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 
-export default function SignupPage() {
+export default function AdminRegisterSecurePage() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     password: "",
+    overrideToken: "",
   });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Client Registration Submitting:", formData);
+    console.log("Admin Registration Submitting:", formData);
   };
 
   return (
@@ -29,13 +30,13 @@ export default function SignupPage() {
               className="text-2xl md:text-3xl font-bold text-slate-900 mb-3" 
               style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
             >
-              CREATE CLIENT ACCOUNT
+              SECURE ADMINISTRATOR REGISTRATION
             </h1>
             <p 
               className="text-sm text-slate-600 max-w-sm mx-auto leading-relaxed" 
               style={{ fontFamily: "'Inter', sans-serif" }}
             >
-              Register your enterprise node to configure custom learning paths.
+              Internal node deployment framework. Unauthorized access attempts are strictly logged.
             </p>
           </div>
 
@@ -45,12 +46,12 @@ export default function SignupPage() {
               
               <div className="space-y-2">
                 <label className="block text-sm text-slate-700 font-medium" style={{ fontFamily: "'Inter', sans-serif" }}>
-                  Full Name
+                  Full Name / Staff ID
                 </label>
                 <input
                   type="text"
                   required
-                  placeholder="John Doe"
+                  placeholder="Admin Staff"
                   className="w-full bg-[#FFFFFF] border border-slate-300 h-12 px-4 text-slate-900 focus:outline-none focus:border-[#F97316] focus:ring-1 focus:ring-[#F97316] transition-colors"
                   style={{ borderRadius: "8px", fontFamily: "'Inter', sans-serif" }}
                   value={formData.name}
@@ -60,12 +61,12 @@ export default function SignupPage() {
 
               <div className="space-y-2">
                 <label className="block text-sm text-slate-700 font-medium" style={{ fontFamily: "'Inter', sans-serif" }}>
-                  Business Email
+                  Administrator Email
                 </label>
                 <input
                   type="email"
                   required
-                  placeholder="name@company.com"
+                  placeholder="admin@adaptivetech.com"
                   className="w-full bg-[#FFFFFF] border border-slate-300 h-12 px-4 text-slate-900 focus:outline-none focus:border-[#F97316] focus:ring-1 focus:ring-[#F97316] transition-colors"
                   style={{ borderRadius: "8px", fontFamily: "'Inter', sans-serif" }}
                   value={formData.email}
@@ -88,6 +89,21 @@ export default function SignupPage() {
                 />
               </div>
 
+              <div className="space-y-2">
+                <label className="block text-sm text-slate-700 font-medium" style={{ fontFamily: "'Inter', sans-serif" }}>
+                  Enterprise Security Override Token
+                </label>
+                <input
+                  type="text"
+                  required
+                  placeholder="AT-2026-SECURE-NODE"
+                  className="w-full bg-[#FFFFFF] border border-slate-300 h-12 px-4 text-slate-900 focus:outline-none focus:border-[#F97316] focus:ring-1 focus:ring-[#F97316] transition-colors"
+                  style={{ borderRadius: "8px", fontFamily: "'Inter', sans-serif" }}
+                  value={formData.overrideToken}
+                  onChange={(e) => setFormData({ ...formData, overrideToken: e.target.value })}
+                />
+              </div>
+
               <button
                 type="submit"
                 className="w-full h-12 mt-6 bg-[#0F172A] text-[#FFFFFF] transition-transform hover:scale-[1.02] active:scale-[0.98]"
@@ -99,7 +115,7 @@ export default function SignupPage() {
                   letterSpacing: "0.05em"
                 }}
               >
-                REGISTER ACCOUNT
+                AUTHORIZE SYSTEM CREDENTIALS
               </button>
             </form>
 
@@ -109,7 +125,7 @@ export default function SignupPage() {
                 className="text-sm text-slate-600 hover:text-[#F97316] transition-colors font-medium inline-block"
                 style={{ fontFamily: "'Inter', sans-serif" }}
               >
-                Already have an account? Sign in here
+                Return to secure entry portal
               </Link>
             </div>
           </div>

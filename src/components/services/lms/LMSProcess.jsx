@@ -40,8 +40,8 @@ export function LMSProcess() {
                 className={`flex items-center gap-10 ${i % 2 === 0 ? "flex-row text-right" : "flex-row-reverse text-left"}`}
               >
                 <div className="flex-1">
-                  <h3 className="text-xl font-black text-slate-900 uppercase tracking-widest mb-2 font-heading">{step.title}</h3>
-                  <p className="text-xs text-slate-900 uppercase tracking-widest leading-relaxed font-black opacity-70">{step.desc}</p>
+                  <h3 className="text-lg font-black text-slate-900 mb-2 font-heading">{step.title}</h3>
+                  <p className="text-sm text-[#475569] leading-relaxed font-normal">{step.desc}</p>
                 </div>
 
                 <div className="relative z-10">

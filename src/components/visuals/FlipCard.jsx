@@ -17,7 +17,7 @@ export function FlipCard({ front, back, className = "" }) {
         transition={{ duration: 0.6, type: "spring", stiffness: 260, damping: 20 }}
       >
         {/* Front */}
-        <div className="absolute inset-0 w-full h-full backface-hidden">
+        <div className="relative w-full h-full backface-hidden">
           {front}
         </div>
 

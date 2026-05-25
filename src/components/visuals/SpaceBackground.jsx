@@ -39,9 +39,9 @@ function Particles({ count = 4000 }) {
         uniforms={{
           uTime: { value: 0 },
           uColors: { value: [
-            new THREE.Color("#00f2ff"), // Cyan
-            new THREE.Color("#0088ff"), // Blue
-            new THREE.Color("#ff00ff"), // Purple/Pink
+            new THREE.Color("#FF9900"), // Amazon Orange/Gold
+            new THREE.Color("#febd69"), // Amazon Gold
+            new THREE.Color("#007185"), // Amazon Teal
             new THREE.Color("#ffffff")  // White
           ] },
         }}
@@ -67,19 +67,19 @@ function Particles({ count = 4000 }) {
             if (dist > 0.5) discard;
             float shimmer = 0.9 + 0.1 * sin(uTime * 6.0 + dist * 15.0);
             
-            vec3 cyan = vec3(0.0, 1.0, 1.0);
-            vec3 electricBlue = vec3(0.0, 0.6, 1.0);
-            vec3 purple = vec3(0.6, 0.0, 1.0);
-            vec3 pink = vec3(1.0, 0.0, 0.6);
-            vec3 teal = vec3(0.0, 1.0, 0.8);
+            vec3 gold = vec3(1.0, 0.6, 0.0);
+            vec3 lightGold = vec3(0.99, 0.74, 0.41);
+            vec3 teal = vec3(0.0, 0.44, 0.52);
+            vec3 deepTeal = vec3(0.0, 0.4, 0.75);
+            vec3 white = vec3(1.0, 1.0, 1.0);
             
             float colorSelect = mod(dist * 0.8 + uTime * 0.2, 5.0);
             vec3 color;
-            if (colorSelect < 1.0) color = cyan;
-            else if (colorSelect < 2.0) color = electricBlue;
-            else if (colorSelect < 3.0) color = purple;
-            else if (colorSelect < 4.0) color = pink;
-            else color = teal;
+            if (colorSelect < 1.0) color = gold;
+            else if (colorSelect < 2.0) color = lightGold;
+            else if (colorSelect < 3.0) color = teal;
+            else if (colorSelect < 4.0) color = deepTeal;
+            else color = white;
             
             gl_FragColor = vec4(color, shimmer * (1.0 - (dist * 2.0)) * 1.0);
           }
@@ -122,9 +122,9 @@ function ElectricShimmer() {
             float wave = (wave1 + wave2) * 0.5;
             
             vec3 white = vec3(0.98, 0.99, 1.0);
-            vec3 iceBlue = vec3(0.85, 0.95, 1.0);
-            vec3 softPink = vec3(1.0, 0.9, 0.98);
-            vec3 softCyan = vec3(0.9, 1.0, 0.98);
+            vec3 softGold = vec3(1.0, 0.97, 0.92);
+            vec3 softAmber = vec3(1.0, 0.95, 0.88);
+            vec3 softTeal = vec3(0.92, 0.98, 0.98);
             
             float mix1 = sin(uTime * 0.2 + p.x) * 0.5 + 0.5;
             float mix2 = cos(uTime * 0.3 + p.y) * 0.5 + 0.5;
@@ -191,10 +191,10 @@ function OrbitCore() {
       <mesh ref={mesh}>
         <sphereGeometry args={[1.0, 32, 32]} />
         <meshStandardMaterial 
-          color="#050816" 
-          roughness={0}
-          metalness={1}
-          emissive="#00f2ff"
+          color="#ffffff" 
+          roughness={0.1}
+          metalness={0.5}
+          emissive="#FF9900"
           emissiveIntensity={2}
         />
       </mesh>
@@ -202,13 +202,13 @@ function OrbitCore() {
       <mesh>
         <sphereGeometry args={[1.5, 32, 32]} />
         <meshBasicMaterial 
-          color="#00f2ff" 
+          color="#007185" 
           transparent 
-          opacity={0.2} 
+          opacity={0.15} 
           side={THREE.BackSide}
         />
       </mesh>
-      <pointLight intensity={20} distance={8} color="#00f2ff" />
+      <pointLight intensity={12} distance={10} color="#FF9900" />
     </group>
   );
 }
@@ -242,24 +242,24 @@ export function SpaceBackground() {
     setMounted(true);
   }, []);
 
-  if (!mounted) return <div className="fixed inset-0 -z-50 bg-[#050816]"></div>;
+  if (!mounted) return <div className="fixed inset-0 -z-50 bg-[#eaeded]"></div>;
 
   return (
-    <div className="fixed inset-0 -z-50 bg-[#050816] overflow-hidden">
+    <div className="fixed inset-0 -z-50 bg-[#eaeded] overflow-hidden">
       {/* 1. Deep Cinematic Foundation - High Contrast */}
-      <div className="absolute inset-0 z-0 bg-[#050816]"></div>
+      <div className="absolute inset-0 z-0 bg-[#eaeded]"></div>
       
       {/* 1.5. Intense Futuristic Orbit Zone - MAIN CENTERPIECE Backdrop */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full pointer-events-none">
-         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(6,182,212,0.25)_0%,transparent_70%)]"></div>
-         <div className="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] mix-blend-screen"></div>
-         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] bg-cyan-500/25 blur-[200px] rounded-full animate-pulse"></div>
-         <div className="absolute inset-0 border-y border-cyan-500/30 bg-grid-white/[0.03]"></div>
+         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,153,0,0.06)_0%,transparent_70%)]"></div>
+         <div className="absolute inset-0 opacity-[0.05] bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] mix-blend-multiply"></div>
+         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] bg-[#FF9900]/5 blur-[200px] rounded-full animate-pulse"></div>
+         <div className="absolute inset-0 border-y border-[#FF9900]/10 bg-grid-slate-900/[0.015]"></div>
          
          {/* Futuristic Light Streaks (CSS) */}
          <div className="absolute inset-0 overflow-hidden">
-            <div className="absolute top-1/4 -left-1/4 w-full h-px bg-gradient-to-r from-transparent via-cyan-500/40 to-transparent rotate-12 animate-pulse"></div>
-            <div className="absolute bottom-1/4 -right-1/4 w-full h-px bg-gradient-to-r from-transparent via-blue-500/40 to-transparent -rotate-12 animate-pulse"></div>
+            <div className="absolute top-1/4 -left-1/4 w-full h-px bg-gradient-to-r from-transparent via-[#FF9900]/10 to-transparent rotate-12 animate-pulse"></div>
+            <div className="absolute bottom-1/4 -right-1/4 w-full h-px bg-gradient-to-r from-transparent via-[#007185]/10 to-transparent -rotate-12 animate-pulse"></div>
          </div>
       </div>
       
@@ -273,7 +273,7 @@ export function SpaceBackground() {
                opacity: [0.3, 0.5, 0.3]
             }}
             transition={{ duration: 10, repeat: Infinity }}
-            className="absolute -top-[10%] -left-[10%] w-[70%] h-[70%] bg-cyan-200/40 blur-[150px] rounded-full"
+            className="absolute -top-[10%] -left-[10%] w-[70%] h-[70%] bg-[#febd69]/30 blur-[150px] rounded-full"
          />
          <motion.div 
             animate={{ 
@@ -283,7 +283,7 @@ export function SpaceBackground() {
                opacity: [0.2, 0.4, 0.2]
             }}
             transition={{ duration: 15, repeat: Infinity }}
-            className="absolute -bottom-[20%] -right-[10%] w-[80%] h-[80%] bg-pink-100/30 blur-[180px] rounded-full"
+            className="absolute -bottom-[20%] -right-[10%] w-[80%] h-[80%] bg-[#007185]/20 blur-[180px] rounded-full"
          />
          <motion.div 
             animate={{ 
@@ -291,7 +291,7 @@ export function SpaceBackground() {
                opacity: [0.1, 0.3, 0.1]
             }}
             transition={{ duration: 12, repeat: Infinity }}
-            className="absolute top-[20%] left-[30%] w-[50%] h-[50%] bg-purple-100/20 blur-[200px] rounded-full"
+            className="absolute top-[20%] left-[30%] w-[50%] h-[50%] bg-[#FF9900]/10 blur-[200px] rounded-full"
          />
       </div>
 
@@ -306,28 +306,28 @@ export function SpaceBackground() {
             <Particles count={3500} />
             
             {/* HUD-Style High-Visibility Orbit Rings */}
-            <OrbitRing radius={5} color="#00f2ff" />
-            <OrbitRing radius={9} color="#0088ff" />
-            <OrbitRing radius={13} color="#00ffcc" />
+            <OrbitRing radius={5} color="#FF9900" />
+            <OrbitRing radius={9} color="#007185" />
+            <OrbitRing radius={13} color="#febd69" />
             
             {/* Futuristic Energy Hubs */}
-            <OrbitingBall radius={5} speed={1.2} size={0.3} color="#00f2ff" offset={0} />
-            <OrbitingBall radius={9} speed={0.8} size={0.22} color="#0088ff" offset={2} />
-            <OrbitingBall radius={13} speed={0.6} size={0.25} color="#00ffcc" offset={4} />
+            <OrbitingBall radius={5} speed={1.2} size={0.3} color="#FF9900" offset={0} />
+            <OrbitingBall radius={9} speed={0.8} size={0.22} color="#007185" offset={2} />
+            <OrbitingBall radius={13} speed={0.6} size={0.25} color="#febd69" offset={4} />
             
             {/* Light Streaks & Sparkles */}
             <OrbitingBall radius={11} speed={-1.5} size={0.08} color="#ffffff" offset={1} /> 
-            <OrbitingBall radius={18} speed={0.2} size={0.12} color="#ff00ff" offset={3} />
-            <OrbitingBall radius={6} speed={2.0} size={0.05} color="#00ffff" offset={5} />
+            <OrbitingBall radius={18} speed={0.2} size={0.12} color="#FF9900" offset={3} />
+            <OrbitingBall radius={6} speed={2.0} size={0.05} color="#007185" offset={5} />
           </Canvas>
         </React.Suspense>
       </div>
 
       {/* 4. Subtle Texture Overlay */}
-      <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
+      <div className="absolute inset-0 opacity-[0.015] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
 
       {/* 5. Bottom Atmospheric Fade */}
-      <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A]/40 via-transparent to-transparent opacity-80 mix-blend-multiply"></div>
+      <div className="absolute inset-0 bg-gradient-to-t from-slate-100/40 via-transparent to-transparent opacity-80"></div>
     </div>
   );
 }

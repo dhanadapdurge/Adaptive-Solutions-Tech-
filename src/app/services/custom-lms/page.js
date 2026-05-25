@@ -19,7 +19,13 @@ export default function CustomLMSPage() {
     <main className="relative min-h-screen bg-transparent text-slate-900 overflow-hidden">
       <Navbar />
 
-      <div className="relative z-10 space-y-12">
+      {/* Premium Continuous Light Blue-White canvas mix */}
+      <div 
+        className="fixed inset-0 z-0" 
+        style={{ background: "radial-gradient(circle at 50% 50%, #FFFFFF 0%, #F4F7FC 60%, #E0F2FE 100%)" }}
+      ></div>
+
+      <div className="relative z-10 pt-20 space-y-12">
         <LMSHero />
         
         <div className="max-w-7xl mx-auto px-6">

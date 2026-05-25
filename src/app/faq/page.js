@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import Link from "next/link";
 import { motion, AnimatePresence } from "motion/react";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
@@ -39,25 +40,25 @@ export default function FAQPage() {
   };
 
   return (
-    <main className="relative min-h-screen bg-[#CBD8E6]">
+    <main className="relative min-h-screen bg-transparent flex flex-col">
       <Navbar />
 
-      <section className="pt-32 pb-20 px-6">
+      <section className="pt-32 pb-20 px-6 flex-grow w-full">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
             <motion.h1 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="text-5xl md:text-7xl font-black mb-10 tracking-tighter text-slate-900 uppercase font-heading"
+              className="text-5xl md:text-7xl font-black mb-10 tracking-tight text-slate-900 uppercase font-heading"
             >
               Frequently <br />
-              <span className="text-cyan-600">Asked</span> Questions
+              <span className="text-blue-600">Asked</span> Questions
             </motion.h1>
             <div className="relative max-w-xl mx-auto">
                 <input 
                   type="text" 
                   placeholder="Search protocols..." 
-                  className="w-full bg-white border border-black/10 rounded-2xl px-12 py-5 outline-none focus:border-cyan-600 transition-all text-slate-900 placeholder:text-slate-400 shadow-xl font-medium"
+                  className="w-full bg-white border border-black/10 rounded-2xl px-12 py-5 outline-none focus:border-blue-600 transition-all text-slate-900 placeholder:text-slate-400 shadow-xl font-medium"
                   onChange={(e) => setSearchQuery(e.target.value)}
                 />
                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-900" />
@@ -78,13 +79,13 @@ export default function FAQPage() {
                     const isOpen = openIndex === id;
                     
                     if (searchQuery && !faq.q.toLowerCase().includes(searchQuery.toLowerCase())) return null;
-
+ 
                     return (
                        <div 
                         key={id} 
                         className={cn(
                           "rounded-[2rem] border transition-all duration-300 overflow-hidden bg-white/60 backdrop-blur-3xl shadow-xl",
-                          isOpen ? "border-cyan-500/50" : "border-black/5 hover:border-cyan-500/30"
+                          isOpen ? "border-blue-500/50" : "border-black/5 hover:border-blue-500/30"
                         )}
                       >
                         <button 
@@ -93,11 +94,11 @@ export default function FAQPage() {
                         >
                            <span className={cn(
                             "text-xs font-black uppercase tracking-wider transition-colors font-heading",
-                            isOpen ? "text-cyan-600" : "text-slate-900 group-hover:text-cyan-600"
+                            isOpen ? "text-blue-600" : "text-slate-900 group-hover:text-blue-600"
                           )}>{faq.q}</span>
                            <div className={cn(
                              "w-8 h-8 rounded-full flex items-center justify-center transition-all border",
-                             isOpen ? "border-cyan-600 text-cyan-600 rotate-180" : "border-black/5 text-slate-900 group-hover:border-cyan-600/40"
+                             isOpen ? "border-blue-600 text-blue-600 rotate-180" : "border-black/5 text-slate-900 group-hover:border-blue-600/40"
                            )}>
                             <ChevronDown className="w-4 h-4" />
                           </div>
@@ -126,11 +127,27 @@ export default function FAQPage() {
           </div>
 
            <div className="mt-24 p-12 rounded-[3.5rem] border border-black/5 text-center relative overflow-hidden bg-white/80 shadow-2xl backdrop-blur-2xl">
-              <div className="absolute inset-0 bg-gradient-to-br from-cyan-50/50 to-transparent"></div>
-              <MessageCircle className="w-12 h-12 text-cyan-600 mx-auto mb-8 animate-pulse" />
-              <h3 className="text-3xl font-black mb-4 text-[#0F172A] uppercase tracking-tighter font-heading">Still In the Dark?</h3>
-              <p className="text-xs text-slate-700 mb-10 max-w-lg mx-auto uppercase tracking-widest font-black opacity-80">Establish a direct transmission with our support crew for specialized mission data.</p>
-              <button className="px-10 py-5 bg-[#0F172A] text-white font-black rounded-2xl hover:bg-slate-800 transition-all shadow-xl uppercase tracking-widest text-[10px]">Open Transmission</button>
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 to-transparent"></div>
+              <MessageCircle className="w-12 h-12 text-blue-600 mx-auto mb-8 animate-pulse" />
+              <h3 
+                className="text-3xl mb-4 text-[#0F172A]" 
+                style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 700 }}
+              >
+                STILL HAVE QUESTIONS?
+              </h3>
+              <p 
+                className="text-base text-slate-700 mb-10 max-w-lg mx-auto opacity-90" 
+                style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400 }}
+              >
+                If you cannot find the answer you are looking for, reach out directly to our support team for specialized assistance.
+              </p>
+              <Link 
+                href="/contact" 
+                className="inline-block px-10 py-5 bg-[#0F172A] text-white rounded-2xl hover:bg-slate-800 transition-all shadow-xl" 
+                style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.05em" }}
+              >
+                CONTACT SUPPORT
+              </Link>
            </div>
         </div>
       </section>

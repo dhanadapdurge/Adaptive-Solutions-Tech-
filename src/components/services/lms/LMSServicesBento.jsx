@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-import Image from "next/image";
 import { motion } from "motion/react";
 import { Layers, Rocket, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -11,98 +10,108 @@ const services = [
     description: "Systems built from scratch to fit your needs perfectly.",
     content: ["Custom features", "Privacy control", "Easy connections"],
     icon: Layers,
-    color: "from-cyan-500/20 to-blue-500/20",
-    img: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1200",
-    size: "md:col-span-2 md:row-span-2",
   },
   {
     title: "Quick Start",
     description: "Deploy a high-performance platform in days.",
     content: ["Quick Launch", "Cost Effective", "Standard Ready"],
     icon: Rocket,
-    color: "from-cyan-500/20 to-blue-500/20",
-    img: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=1200",
-    size: "md:col-span-1 md:row-span-1",
   },
   {
     title: "New Tools",
     description: "Modernize your old systems with new technology.",
     content: ["Better UI", "Cloud Moving", "Mobile Ready"],
     icon: Sparkles,
-    color: "from-blue-500/20 to-cyan-500/20",
-    img: "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=80&w=1200",
-    size: "md:col-span-1 md:row-span-1",
   }
 ];
 
 export function LMSServicesBento() {
   return (
-    <section className="py-32 px-6 relative overflow-hidden bg-transparent font-poppins">
+    <section className="py-24 px-6 relative overflow-hidden bg-transparent font-sans">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-24">
-          <h2 className="text-4xl md:text-6xl font-black text-[#0F172A] mb-8 uppercase tracking-tighter leading-tight">
-            Our <span className="text-cyan-600">Services</span>
+          <h2 className="text-4xl md:text-6xl font-black text-[#0F172A] mb-8 tracking-tight leading-tight font-heading">
+            Our <span className="text-blue-600">Services</span>
           </h2>
-          <p className="text-slate-900 text-[11px] uppercase tracking-[0.4em] font-black opacity-70">
+          <p className="text-slate-655 text-[11px] uppercase tracking-[0.4em] font-black opacity-70">
             Simple. Fast. Smart.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 auto-rows-[350px]">
-          {services.map((service, idx) => (
-            <motion.div
-              key={idx}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: idx * 0.1 }}
-              className={cn(
-                "group relative rounded-[4rem] border border-black/10 overflow-hidden shadow-2xl transition-all duration-700 bg-[#0F172A]",
-                service.size
-              )}
-            >
-              {/* Background Visual - DARK & ATMOSPHERIC */}
-              <div className="absolute inset-0 z-0">
-                 <Image 
-                   src={service.img} 
-                   alt={service.title} 
-                   fill
-                   className="object-cover group-hover:scale-110 transition-transform duration-[4s] opacity-60" 
-                 />
-                 {/* Deep Navy Overlays for Text Visibility */}
-                 <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A] via-[#0F172A]/40 to-transparent"></div>
-                 <div className="absolute inset-0 bg-gradient-to-r from-[#0F172A]/60 via-transparent to-transparent"></div>
-                 <div className={cn("absolute inset-0 bg-gradient-to-br opacity-20", service.color)}></div>
-              </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-10">
+          {services.map((service, idx) => {
+            const isMiddle = idx === 1;
+            return (
+              <div 
+                key={idx}
+                className={cn(
+                  "relative group transition-transform duration-500",
+                  isMiddle ? "md:-translate-y-[10px]" : ""
+                )}
+              >
+                {/* Soft, rich gradient glow behind the card on hover */}
+                <div 
+                  className="absolute -inset-1.5 rounded-[2.5rem] bg-gradient-to-r from-[#4F46E5] via-[#7C3AED] to-[#2DD4BF] opacity-0 group-hover:opacity-40 blur-2xl transition-all duration-700 pointer-events-none group-hover:scale-[1.03]"
+                />
 
-              {/* Content Overlay - HIGH VISIBILITY WHITE TEXT */}
-              <div className="relative z-10 p-12 h-full flex flex-col justify-between">
-                 <div>
-                    <div className="flex items-center justify-between mb-10">
-                       <div className="w-16 h-16 rounded-2xl bg-white/10 backdrop-blur-3xl border border-white/20 flex items-center justify-center group-hover:bg-cyan-500 group-hover:border-cyan-400 transition-all group-hover:scale-110 shadow-xl">
-                          <service.icon className="w-8 h-8 text-white" />
-                       </div>
-                       <span className="text-[11px] font-black uppercase tracking-[0.5em] text-white/40">0{idx + 1}</span>
-                    </div>
-                    
-                    <h3 className="text-3xl md:text-5xl font-black text-white mb-6 uppercase tracking-tighter leading-tight group-hover:text-cyan-400 transition-colors">
-                      {service.title}
-                    </h3>
-                    
-                    <p className="text-white mb-12 leading-relaxed font-black uppercase tracking-[0.3em] text-[12px] opacity-80 max-w-md">
-                      {service.description}
-                    </p>
-                 </div>
-                 
-                 <div className="flex flex-wrap gap-4 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
-                    {service.content.map((item, i) => (
-                       <span key={i} className="px-6 py-3 bg-white/10 backdrop-blur-3xl rounded-full text-[10px] font-black text-white uppercase tracking-[0.25em] border border-white/10 shadow-lg">
-                          {item}
-                       </span>
-                    ))}
-                 </div>
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, delay: idx * 0.1 }}
+                  className="relative h-full rounded-[2.5rem] p-10 overflow-hidden flex flex-col justify-between shadow-[0_4px_12px_rgba(15,23,42,0.03)] hover:shadow-2xl transition-all duration-500 border"
+                  style={{
+                    background: "rgba(255, 255, 255, 0.85)",
+                    backdropFilter: "blur(8px)",
+                    borderColor: "rgba(226, 232, 240, 0.8)",
+                  }}
+                >
+                  {/* Creative Top Border Line Glow */}
+                  <div className="absolute top-0 left-0 right-0 h-[2.5px] bg-gradient-to-r from-[#4F46E5] to-[#7C3AED] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  
+                  <div className="relative z-10 flex flex-col h-full justify-between">
+                     <div>
+                        <div className="flex items-center justify-between mb-8">
+                           {/* Soft-tinted circular badges */}
+                           <div className={cn(
+                             "w-14 h-14 rounded-2xl flex items-center justify-center border transition-all duration-300 group-hover:scale-110 shadow-sm",
+                             idx === 0 ? "bg-blue-500/10 border-blue-200/50 text-blue-600" :
+                             idx === 1 ? "bg-purple-500/10 border-purple-200/50 text-purple-600" :
+                             "bg-cyan-500/10 border-cyan-200/50 text-cyan-600"
+                           )}>
+                              <service.icon className="w-6 h-6" />
+                           </div>
+                           {/* Step indicator in top-right corner */}
+                           <span 
+                             className="absolute top-8 right-8 text-xs font-mono tracking-wider text-[#0F172A]/40 pointer-events-none select-none"
+                             style={{ fontWeight: 600 }}
+                           >
+                             0{idx + 1}
+                           </span>
+                        </div>
+                        
+                        <h3 className="text-2xl font-black text-[#0F172A] mb-4 tracking-tight leading-tight group-hover:text-indigo-650 transition-colors font-heading text-left">
+                          {service.title}
+                        </h3>
+                        
+                        <p className="text-[#475569] mb-8 leading-relaxed font-normal text-sm text-left font-sans">
+                          {service.description}
+                        </p>
+                     </div>
+                     
+                     {/* Features Content Checklist Always Visible */}
+                     <div className="flex flex-wrap gap-2 mt-auto">
+                        {service.content.map((item, i) => (
+                           <span key={i} className="px-4 py-2 bg-slate-50 border border-slate-200/60 rounded-full text-[10px] font-bold text-slate-600 uppercase tracking-wider font-sans">
+                              {item}
+                           </span>
+                        ))}
+                     </div>
+                  </div>
+                </motion.div>
               </div>
-            </motion.div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

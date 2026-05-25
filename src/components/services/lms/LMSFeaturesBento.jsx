@@ -38,24 +38,24 @@ export function LMSFeaturesBento() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.05 }}
-              className="group relative glass-premium rounded-3xl border border-white/10 p-8 overflow-hidden hover:border-cyan-400 transition-all flex flex-col bg-[#0F172A] shadow-2xl backdrop-blur-xl"
+              className="group relative rounded-3xl border border-[#E2E8F0] p-8 overflow-hidden hover:border-cyan-500 hover:shadow-lg transition-all flex flex-col bg-white shadow-[0_4px_12px_rgba(15,23,42,0.03)]"
             >
-               <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+               <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
                
                <div className="relative z-10 flex flex-col h-full">
-                   <div className="w-12 h-12 rounded-2xl bg-cyan-500/10 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-cyan-500/20 transition-all border border-cyan-500/30">
-                      <f.icon className="w-6 h-6 text-cyan-400" />
-                   </div>
-                   <h3 className="text-sm font-black text-white uppercase tracking-widest mb-2 group-hover:text-cyan-400 transition-colors">{f.title}</h3>
-                  <p className="text-[10px] text-slate-400 uppercase tracking-widest leading-relaxed font-bold">{f.desc}</p>
-                  
-                  {/* Small Decorative Elements */}
-                   <div className="mt-auto pt-6 flex justify-between items-center opacity-30 group-hover:opacity-100 transition-opacity">
-                      <div className="h-0.5 w-1/2 bg-white/10 rounded-full overflow-hidden">
-                         <div className="h-full bg-cyan-400 w-1/3 shadow-[0_0_8px_#22d3ee]"></div>
-                      </div>
-                      <div className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse shadow-[0_0_8px_#22d3ee]"></div>
-                   </div>
+                    <div className="w-12 h-12 rounded-2xl bg-cyan-500/10 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-cyan-500/20 transition-all border border-cyan-500/20">
+                       <f.icon className="w-6 h-6 text-cyan-600" />
+                    </div>
+                    <h3 className="text-base font-black text-[#0F172A] tracking-tight mb-2 group-hover:text-cyan-600 transition-colors font-heading text-left">{f.title}</h3>
+                   <p className="text-sm text-[#475569] leading-relaxed font-normal text-left">{f.desc}</p>
+                   
+                   {/* Small Decorative Elements */}
+                    <div className="mt-auto pt-6 flex justify-between items-center opacity-40 group-hover:opacity-100 transition-opacity">
+                       <div className="h-0.5 w-1/2 bg-slate-100 rounded-full overflow-hidden">
+                          <div className="h-full bg-cyan-500 w-1/3"></div>
+                       </div>
+                       <div className="w-2 h-2 rounded-full bg-cyan-500 animate-pulse shadow-[0_0_8px_rgba(6,182,212,0.4)]"></div>
+                    </div>
                </div>
             </motion.div>
           ))}
