@@ -56,9 +56,6 @@ export function ProfileSidebar({ isOpen, onClose }) {
             {/* Form Fields */}
             <div className="space-y-6">
               {[
-                { label: "Full Name", icon: User, value: "Alex Volkov" },
-                { label: "Email Address", icon: Mail, value: "alex.volkov@space.tech" },
-                { label: "Phone Number", icon: Phone, value: "+1 (555) 342-9901" },
                 { label: "Organization", icon: Building2, value: "Galaxy Learning Corp" },
                 { label: "Role", icon: Briefcase, value: "Creative Director" },
               ].map((field) => (

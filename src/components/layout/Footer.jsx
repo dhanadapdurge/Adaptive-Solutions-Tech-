@@ -25,7 +25,7 @@ export function Footer() {
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80%] h-px bg-gradient-to-r from-transparent via-cyan-500/25 to-transparent"></div>
       
       <div className="max-w-7xl mx-auto relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mb-20">
           
           {/* Brand */}
           <div className="space-y-8">
@@ -89,22 +89,6 @@ export function Footer() {
                 ))}
             </ul>
           </div>
-
-          {/* Support */}
-          <div>
-            <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-white mb-8">Contact Info</h4>
-            <ul className="space-y-4 mb-8">
-              <li className="flex items-center gap-3 text-slate-350 text-[10px] font-bold uppercase tracking-widest">
-                <Mail className="w-4 h-4 text-cyan-500 shrink-0" />
-                expert@adaptive.tech
-              </li>
-              <li className="flex items-center gap-3 text-slate-350 text-[10px] font-bold uppercase tracking-widest">
-                <Phone className="w-4 h-4 text-cyan-500 shrink-0" />
-                +91 XXXXXXXX
-              </li>
-            </ul>
-          </div>
-
         </div>
 
         <div className="pt-8 border-t border-slate-800 flex flex-col md:flex-row items-center justify-between gap-6">

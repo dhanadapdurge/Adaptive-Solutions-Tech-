@@ -49,24 +49,6 @@ export default function ContactPage() {
               <p className="text-base text-slate-900 mb-12 max-w-lg leading-relaxed font-bold uppercase tracking-widest text-[10px] opacity-80">
                 Ready to transcend traditional learning? Reach out to our crew for a strategic consultation or technical inquiry.
               </p>
-              
-              <div className="space-y-8">
-                {[
-                  { icon: Mail, label: "EMAIL US", val: "solutions@adaptivetech.com" },
-                  { icon: Phone, label: "CALL US", val: "+1 (888) 555-0190" },
-                  { icon: MapPin, label: "GLOBAL HEADQUARTERS", val: "100 Innovation Way, Silicon Valley, CA" },
-                ].map((item, i) => (
-                  <div key={i} className="flex items-center gap-6 group cursor-pointer">
-                    <div className="w-14 h-14 rounded-2xl border border-black/10 flex items-center justify-center group-hover:border-blue-600 transition-all bg-white shadow-xl backdrop-blur-xl">
-                      <item.icon className="w-6 h-6 text-blue-600 group-hover:text-blue-500 transition-colors" />
-                    </div>
-                    <div>
-                      <p className="text-[10px] font-black text-slate-900 uppercase tracking-[0.3em] mb-1">{item.label}</p>
-                      <p className="text-lg text-slate-900 font-black tracking-tight">{item.val}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
 
               <div className="mt-16 flex gap-6">
                 {[Linkedin, Twitter, Github].map((Icon, i) => (
