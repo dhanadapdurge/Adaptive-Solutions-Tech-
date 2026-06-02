@@ -191,7 +191,7 @@ export function Navbar() {
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden transition-colors text-white hover:text-[#F97316]"
+          className="md:hidden transition-colors text-white hover:text-[#F97316] relative z-[70]"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
           {isMobileMenuOpen ? <X /> : <Menu />}
@@ -202,12 +202,16 @@ export function Navbar() {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            className="md:hidden bg-[#0F172A] border-b border-slate-800 overflow-hidden shadow-2xl font-sans"
+            initial={{ x: "100%" }}
+            animate={{ x: 0 }}
+            exit={{ x: "100%" }}
+            transition={{ type: "tween", duration: 0.3 }}
+            className="md:hidden fixed top-0 right-0 h-[100vh] w-[280px] bg-[#0F172A] shadow-2xl font-sans z-[60] flex flex-col"
           >
-            <div className="p-8 flex flex-col gap-6">
+            {/* Spacer for navbar overlay area */}
+            <div className="h-[80px] shrink-0 border-b border-slate-800/30"></div>
+            
+            <div className="p-6 flex flex-col gap-6 overflow-y-auto flex-grow">
               {navLinks.map((link) => {
                 const active = isLinkActive(link);
                 return (
@@ -246,13 +250,14 @@ export function Navbar() {
                   </div>
                 );
               })}
-               <div className="flex flex-col gap-4 mt-4 pt-8 border-t border-slate-800">
-                 <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)} className="text-center font-black uppercase tracking-widest bg-[#F97316] text-[#FFFFFF] hover:bg-[#D97706] hover:shadow-[0_0_20px_rgba(249,115,22,0.4)] transition-all py-5 rounded-2xl shadow-xl text-xs">Book Strategy</Link>
-                 <Link href="/login" onClick={() => setIsMobileMenuOpen(false)} className={cn(
-                   "text-center font-medium uppercase tracking-widest text-xs py-2 hover:text-[#F97316] transition-colors",
-                   pathname === "/login" ? "text-white font-semibold" : "text-[#E2E8F0]"
-                 )}>Login</Link>
-              </div>
+            </div>
+            
+            <div className="flex flex-col gap-4 p-6 mt-auto border-t border-slate-800 shrink-0">
+               <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)} className="text-center font-black uppercase tracking-widest bg-[#F97316] text-[#FFFFFF] hover:bg-[#D97706] hover:shadow-[0_0_20px_rgba(249,115,22,0.4)] transition-all p-4 rounded-xl shadow-xl text-xs">Book Strategy</Link>
+               <Link href="/login" onClick={() => setIsMobileMenuOpen(false)} className={cn(
+                 "text-center font-bold uppercase tracking-widest text-xs p-4 rounded-xl border border-slate-700 hover:text-[#F97316] transition-colors",
+                 pathname === "/login" ? "text-white bg-slate-800/50" : "text-[#E2E8F0]"
+               )}>Login</Link>
             </div>
           </motion.div>
         )}

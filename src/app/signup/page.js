@@ -21,7 +21,7 @@ export default function SignupPage() {
       <Navbar />
 
       <div className="flex-grow flex items-center justify-center px-6 py-32 z-10">
-        <div className="w-full" style={{ maxWidth: "440px" }}>
+        <div className="w-full max-w-[440px] registration-card">
           
           {/* Card Header */}
           <div className="text-center mb-10">

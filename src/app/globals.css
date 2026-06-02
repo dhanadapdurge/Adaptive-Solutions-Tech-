@@ -130,3 +130,61 @@
     -webkit-backface-visibility: hidden;
   }
 }
+
+@media (max-width: 768px) {
+  /* Hero Section & Layout Block Fluidity */
+  section .grid, main .grid {
+    grid-template-columns: 1fr !important;
+  }
+  
+  /* Convert horizontal flex rows to columns, skipping obvious inline items */
+  section .flex-row, section .flex:not(.items-center) {
+    flex-direction: column !important;
+  }
+
+  /* Prevent row reverse from breaking mobile layout */
+  .flex-row-reverse {
+    flex-direction: column-reverse !important;
+  }
+
+  /* Fluid Font Scaling */
+  h1, h2, .text-4xl, .text-5xl, .text-6xl {
+    font-size: clamp(1.8rem, 6vw, 2.2rem) !important;
+    line-height: 1.2 !important;
+  }
+
+  /* Section Padding Equalization */
+  section, .py-32, .py-24, .py-20, .py-16, .pt-32, .pb-24 {
+    padding-top: 2.5rem !important;
+    padding-bottom: 2.5rem !important;
+  }
+
+  /* Card Sizing */
+  .registration-card {
+    width: 90% !important;
+    max-width: none !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  /* Mobile Chatbot Adjustments */
+  .chatbot-toggle-btn {
+    width: 50px !important;
+    height: 50px !important;
+    bottom: 1rem !important;
+    right: 1rem !important;
+  }
+  
+  .chatbot-tooltip {
+    font-size: 0.75rem !important;
+    bottom: 5rem !important; /* Directly above the 50px toggle button at bottom 1rem */
+    right: 1rem !important;
+  }
+
+  .chatbot-window {
+    width: 88vw !important;
+    height: 70vh !important;
+    bottom: 5rem !important;
+    right: 6vw !important;
+  }
+}
