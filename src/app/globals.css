@@ -187,4 +187,50 @@
     bottom: 5rem !important;
     right: 6vw !important;
   }
+
+  /* 1. Fix Accent Orbits and Decorative Graphics */
+  section .aspect-square {
+    width: 100% !important;
+    max-width: 320px !important;
+    height: auto !important;
+    transform: scale(0.8) !important;
+    margin: 0 auto !important;
+    opacity: 0.8 !important;
+  }
+
+  /* 2. Fix Container Boxes and Backgrounds */
+  section .glass, 
+  section [class*="p-10"], 
+  section [class*="p-12"], 
+  section [class*="p-16"],
+  section [class*="rounded-[3rem]"],
+  section [class*="rounded-3xl"] {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 1.5rem !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    box-sizing: border-box !important;
+    background-size: cover !important;
+    background-position: center center !important;
+  }
+
+  /* 3. Correct Text Size and Readability */
+  section .text-xs, 
+  section .text-sm,
+  section .label-text {
+    font-size: 1rem !important;
+    line-height: 1.5 !important;
+    color: #334155 !important;
+  }
+
+  section p {
+    font-size: 1.1rem !important;
+  }
+
+  section h3, 
+  section h4 {
+    font-size: 1.5rem !important;
+    font-weight: 600 !important;
+  }
 }
